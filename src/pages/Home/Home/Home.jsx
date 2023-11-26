@@ -1,6 +1,7 @@
 
 // import Banner from "../Banner/Banner";
 import Services from "../Services/Services";
+import Testimonials from "../Testimonials/Testimonials";
 
 
 
@@ -10,6 +11,7 @@ const Home = () => {
             
             {/* <Banner></Banner> */}
             <Services></Services>
+            <Testimonials></Testimonials>
         </div>
     );
 };

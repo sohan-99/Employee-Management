@@ -44,7 +44,7 @@ const Navbar = () => {
 
                         <img className="rounded-full" src="https://i.ibb.co/74dGgmy/rsz-11rsz-original-ccdca44038291000ff01aaf434d99fb5.jpg" alt="" />
                         <h2 className="lg:text-2xl text-black md:text-2xl text-lg default:hidden mt-3 lg:font-bold md:font-bold font-medium">
-                    Innovations</h2>
+                            Innovations</h2>
                     </div>
                 </Link>
             </div>
@@ -92,6 +92,9 @@ const Navbar = () => {
                         <button className="btn rounded-full btn-info text-white lg:text-xl lg:font-semibold">SignIn</button>
                     </Link>
             } */}
+                <Link to='/signin'>
+                    <button className="btn rounded-full bg-slate-400 text-white lg:text-xl lg:font-semibold">SignIn</button>
+                </Link>
             </div>
         </div>
     );
