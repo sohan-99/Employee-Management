@@ -22,7 +22,9 @@ const Navbar = () => {
     const links =
         <>
             <li className="text-xl font-semibold "><NavLink to='/'>Home</NavLink></li>
-            <li className="text-xl font-semibold "><NavLink to='/about'>About</NavLink></li>
+            <li className="text-xl font-semibold "><NavLink to='/about'>About Us</NavLink></li>
+            <li className="text-xl font-semibold "><NavLink to='/contact'>Contact us </NavLink></li>
+            <li className="text-xl font-semibold "><NavLink to='/dashboard'>Dashboard</NavLink></li>
 
         </>
     return (

@@ -8,6 +8,7 @@ import "./index.css";
 import Layout from './Layout/Layout';
 import Home from './pages/Home/Home/Home';
 import ErrorPage from './components/ErrorPage/ErrorPage';
+import ServiceDetails from './pages/Home/Services/ServiceDetails';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
         path: '/',
         element:<Home></Home> 
       },
+      {
+        path: '/:service_name',
+        element: <ServiceDetails></ServiceDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/servicetype/${params.service_name}`)
+      }
     ]
   },
 ]);

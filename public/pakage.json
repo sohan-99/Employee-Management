@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "service_name": "Professional Services",
+        "service_details": "Professional services encompass a range of expertly delivered, specialized, and customized offerings by professionals in various fields such as consulting, legal, accounting, and IT. These services are characterized by a high level of expertise, tailored solutions, and a client-centric approach. They aim to meet specific client needs, address complex challenges, and enhance overall business performance through strategic advice, implementation support, and ongoing collaboration.",
+        "features": "Consulting, Training, Support",
+        "Cost": "$2000",
+        "img": "https://i.ibb.co/rZcBypV/400648865-1686218775236269-8777385948662429942-n.jpg"
+    },
+    {
+        "id": 2,
+        "service_name": "Agile DevOps",
+        "service_details": "Agile DevOps is a collaborative software development approach that integrates Agile principles with DevOps practices. It emphasizes cross-functional teams, continuous collaboration, and iterative development to deliver high-quality software quickly. Agile focuses on flexibility and customer feedback, while DevOps streamlines the entire development lifecycle, promoting automation and collaboration between development and operations teams. Together, they enable rapid, efficient, and customer-centric software delivery.",
+        "technologies": "Continuous Integration, Continuous Deployment, Automation",
+        "Cost": "$2500",
+        "img": "https://i.ibb.co/4T9p37Z/400739759-1043810796933309-5527730604920491703-n.jpg"
+    },
+    {
+        "id": 3,
+        "service_name": "Audio Video Collaboration & HD Video Teleconferencing (VTC)",
+        "service_details": "Audio Video Collaboration involves the integration of audio and video technologies to facilitate seamless communication and collaboration. High Definition Video Teleconferencing (VTC) utilizes HD video to enable virtual meetings, enhancing visual clarity and communication effectiveness. These technologies play a crucial role in modern communication, connecting individuals and teams across locations for productive collaboration and efficient information sharing.",
+        "features": "HD Video Conferencing,Audio Conferencing, Screen Sharing",
+        "Cost": "$3000",
+        "img":"https://i.ibb.co/qs6wgnX/400012034-274362428481021-2051172732499477513-n.jpg"
+
+    }
+]
