@@ -11,10 +11,11 @@ import ErrorPage from './components/ErrorPage/ErrorPage';
 import ServiceDetails from './pages/Home/Services/ServiceDetails';
 import About from './pages/Home/About/About';
 import Contact from './pages/Home/Contact/Contact';
-import Dashboard from './pages/Home/Dashboard/Dashboard';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import AuthProvider from './Provider/AuthProvider';
+import PrivetRoute from './PrivetRoute/PrivetRoute';
+import DashboardLayout from './Layout/DashboardLayout';
 
 const router = createBrowserRouter([
   {
@@ -37,12 +38,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/contact',
-        element: <Contact></Contact>
+        element:<PrivetRoute><Contact></Contact></PrivetRoute> 
       },
-      {
-        path: '/dashboard',
-        element: <Dashboard></Dashboard>
-      },
+      // {
+      //   path: '/dashboard',
+      //   element:<PrivetRoute><Dashboard></Dashboard></PrivetRoute> 
+      // },
       {
         path: '/signin',
         element: <SignIn></SignIn>
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/dashboard',
+    element:<PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute> ,
+    children: [
+      
+      
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

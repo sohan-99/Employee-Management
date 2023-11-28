@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,6 +10,8 @@ import app from "../../firebase/firebase.config";
 
 
 const Signup = () => {
+   const imgage_hosting_key = import.meta.env.VITE_IMAGE_HOSTIONG_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_key}`
    const navigate = useNavigate()
    const location = useLocation();
    const from = location.state?.from?.pathname || "/";
@@ -21,7 +24,7 @@ const Signup = () => {
          .then(result => {
             // console.log(result.user);
             const user = result.user;
-            saveUserSocialLogin(user?.displayName, user?.email, user?.photoURL);
+            socialsignin(user?.displayName, user?.email, user?.photoURL);
             // console.log(user);
             toast.success('Successfully Login!');
             // You can navigate the user here after successful login if needed.
@@ -41,8 +44,10 @@ const Signup = () => {
       const name = form.get('name');
       const photo = form.get('photo');
       const password = form.get('password');
-      const role = e.target.role.value;
-      console.log(email, photo, name, password, role);
+      const salary = form.get('salary');
+      const accno = form.get('accno');
+      const designation = e.target.designation.value;
+      console.log(email, photo, name, password, designation, accno, salary);
 
       // Validate  password
       // if (password.length < 6 || !/[A-Z]/.test(password) || !/[!@#$%^&*()_+[\]{};':"\\|,.<>?]/.test(password)) {
@@ -50,34 +55,50 @@ const Signup = () => {
       //    return;
       // }
 
+        // Image Upload
 
+    const image = e.target.photo.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=c104f728187c469b2499aec8f224a408`;
+   // const url = `https://api.imgbb.com/1/upload?key=${image_hosting_api}`;
 
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageInfo) => {
+         // create user
+         createUser(email, password)
+            .then(result => {
+               saveUser(name, email, designation, imageInfo.data.display_url,salary,accno);
+               updateUserProfile(name, imageInfo.data.display_url)
+                  .then(data => {
+                     console.log(data,imageInfo.data.display_url);
+                     navigate(location.state?.from?.pathname ? location.state?.from?.pathname : "/")
+                     toast.success("Successfully Register !");
+                  })
+                  .catch(error => {
+                     console.log(error.message);
+                  })
+            })
+            .catch(error => {
+               toast.error(error.message);
+            })
+      })
 
-      // create user
-      createUser(email, password)
-         .then(result => {
-            saveUser(name, email, role, photo);
-            updateUserProfile(name, photo)
-               .then(data => {
-                  // console.log(data);
-                  navigate(location.state?.from?.pathname ? location.state?.from?.pathname : "/")
-                  toast.success("Successfully Register !");
-               })
-               .catch(error => {
-                  console.log(error.message);
-               })
-         })
-         .catch(error => {
-            toast.error(error.message);
-         })
+      
    }
-// data sent to database in  form 
-   const saveUser = (name, email, role, photo) => {
+   // data sent to database in  form 
+   const saveUser = (name, email, designation, photo, salary, accno) => {
       const user = {
          name: name,
          email: email,
-         role: role,
-         photo: photo,
+         designation: designation,
+         image: photo,
+         salary: salary,
+         bank_account_no: accno,
       };
       fetch("http://localhost:5000/users", {
          method: "POST",
@@ -95,13 +116,15 @@ const Signup = () => {
          .catch((error) => console.error(error));
    };
 
-// data sent to database in popup sign up 
-   const saveUserSocialLogin = (name, email, image) => {
+   // data sent to database in popup sign up 
+   const socialsignin = (name, email, image) => {
       const user = {
          name: name,
          email: email,
-         role: "Employee",
          image: image,
+         designation: "Employee",
+         salary: '10000',
+         bank_account_no: "45967",
       };
       fetch("http://localhost:5000/users", {
          method: "POST",
@@ -112,9 +135,7 @@ const Signup = () => {
       })
          .then((res) => res.json())
          .then((data) => {
-            if (data.acknowledged) {
-               toast.success("Created user succesfully...!");
-            }
+            console.log(data);
          })
          .catch((error) => console.error(error));
    };
@@ -144,7 +165,7 @@ const Signup = () => {
                      <label className="block text-black lg:text-lg md:text-base   font-medium">Photo URL</label>
 
                      <input
-                        type="text"
+                        type="file"
                         name="photo"
                         placeholder="Photo URL"
                         className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-400"
@@ -173,13 +194,13 @@ const Signup = () => {
                         required
                      />
                   </div>
-                  {/* .................role.....................  */}
+                  {/* .................designation.....................  */}
                   <div>
                      <label htmlFor="email" className="block mb-2 text-sm">
                         Select profile type
                      </label>
                      <select
-                        name="role"
+                        name="designation"
                         className="select select-bordered  bg-gray-200 focus:outline-green-500 text-gray-900 w-full "
                      >
                         <option disabled selected>
@@ -189,6 +210,30 @@ const Signup = () => {
                         <option>HR</option>
                         <option>Admin</option>
                      </select>
+                  </div>
+                  {/* ===================account no==================== */}
+                  <div>
+                     <label className="block text-black lg:text-lg md:text-base  font-medium">Bank Account Number</label>
+
+                     <input
+                        type="text"
+                        name="accno"
+                        placeholder="bank_account_no"
+                        className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-400"
+                        required
+                     />
+                  </div>
+                  {/* ==============salary================= */}
+                  <div>
+                     <label className="block text-black lg:text-lg md:text-base  font-medium">Salary</label>
+
+                     <input
+                        type="text"
+                        name="salary"
+                        placeholder="salary"
+                        className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-400"
+                        required
+                     />
                   </div>
                   {/* .................password.....................  */}
                   <div>
