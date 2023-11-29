@@ -3,7 +3,8 @@
 const AllEmployee = () => {
    return (
       <div>
-         <h3>hi</h3>
+         
+         <h3>ALl EMPLOYEE </h3>
       </div>
    );
 };

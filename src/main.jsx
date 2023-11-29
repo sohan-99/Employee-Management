@@ -17,16 +17,21 @@ import AuthProvider from './Provider/AuthProvider';
 import PrivetRoute from './PrivetRoute/PrivetRoute';
 import DashboardLayout from './Layout/DashboardLayout';
 import AllEmployee from './pages/AdminHome/AllEmployee';
+import EmployeeList from './pages/HR/EmployeeList';
+import PaymentHistory from './pages/Employee/PaymentHistory';
+import WorkSheet from './pages/Employee/WorkSheet';
+import Details from './pages/HR/Details';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
-        element:<Home></Home> 
+        element: <Home></Home>
       },
       {
         path: '/:service_name',
@@ -39,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/contact',
-        element:<PrivetRoute><Contact></Contact></PrivetRoute> 
+        element: <PrivetRoute><Contact></Contact></PrivetRoute>
       },
       {
         path: '/signin',
@@ -53,25 +58,40 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element:<PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
-    children:[
-      {
-        path: '/dashboard',
-        element: <h1>Welcome to Dashboard</h1>
-      },
+    element: <PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
+    children: [
+      // Admin Dashboard
       {
         path: '/dashboard/allemployee',
         element: <AllEmployee></AllEmployee>
+      },
+      // HR  Dashboard
+      {
+        path: "/dashboard/employeeList",
+        element: <EmployeeList></EmployeeList>
+      },
+      {
+        path: "/dashboard/details",
+        element: <Details></Details>
+      },
+      // eployee Dashboard
+      {
+        path: "/dashboard/paymenthistory",
+        element: <PaymentHistory></PaymentHistory>
+      },
+      {
+        path: "/dashboard/worksheet",
+        element: <WorkSheet></WorkSheet>
       }
     ]
-    
+
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <AuthProvider>
-     <RouterProvider router={router} />
-     </AuthProvider>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
