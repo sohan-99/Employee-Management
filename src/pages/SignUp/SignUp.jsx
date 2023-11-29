@@ -15,7 +15,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_k
    const navigate = useNavigate()
    const location = useLocation();
    const from = location.state?.from?.pathname || "/";
-   const { createUser, updateUserProfile } = useContext(AuthContext)
+   const { createUser, updateUserProfile,setLoading } = useContext(AuthContext)
    const handleGooglePopUp = () => {
       const auth = getAuth(app);
       const provider = new GoogleAuthProvider();
@@ -47,7 +47,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_k
       const salary = form.get('salary');
       const accno = form.get('accno');
       const designation = e.target.designation.value;
-      console.log(email, photo, name, password, designation, accno, salary);
+      // console.log(email, photo, name, password, designation, accno, salary);
 
       // Validate  password
       // if (password.length < 6 || !/[A-Z]/.test(password) || !/[!@#$%^&*()_+[\]{};':"\\|,.<>?]/.test(password)) {
@@ -75,9 +75,8 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_k
                saveUser(name, email, designation, imageInfo.data.display_url,salary,accno);
                updateUserProfile(name, imageInfo.data.display_url)
                   .then(data => {
-                     console.log(data,imageInfo.data.display_url);
-                     navigate(location.state?.from?.pathname ? location.state?.from?.pathname : "/")
-                     toast.success("Successfully Register !");
+                     navigate("/")
+                     setLoading(false)
                   })
                   .catch(error => {
                      console.log(error.message);
@@ -135,7 +134,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_k
       })
          .then((res) => res.json())
          .then((data) => {
-            console.log(data);
+            // console.log(data);
          })
          .catch((error) => console.error(error));
    };
@@ -203,12 +202,12 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_k
                         name="designation"
                         className="select select-bordered  bg-gray-200 focus:outline-green-500 text-gray-900 w-full "
                      >
-                        <option disabled selected>
+                        <option disabled >
                            Select profile type
                         </option>
-                        <option>Employee</option>
-                        <option>HR</option>
-                        <option>Admin</option>
+                        <option value='Employee'>Employee</option>
+                        <option value='HR'>HR</option>
+                        <option value='Admin'>Admin</option>
                      </select>
                   </div>
                   {/* ===================account no==================== */}

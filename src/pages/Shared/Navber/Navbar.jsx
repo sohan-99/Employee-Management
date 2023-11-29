@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
@@ -25,7 +26,7 @@ const Navbar = () => {
     const handleSignOut = () => {
         logOut()
             .then(result => {
-                console.log(result.user);
+               toast.success('Logout Successfully')
             })
             .catch(error => {
                 console.log(error);

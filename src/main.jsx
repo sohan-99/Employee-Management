@@ -16,6 +16,7 @@ import SignUp from './pages/SignUp/SignUp';
 import AuthProvider from './Provider/AuthProvider';
 import PrivetRoute from './PrivetRoute/PrivetRoute';
 import DashboardLayout from './Layout/DashboardLayout';
+import AllEmployee from './pages/AdminHome/AllEmployee';
 
 const router = createBrowserRouter([
   {
@@ -40,10 +41,6 @@ const router = createBrowserRouter([
         path: '/contact',
         element:<PrivetRoute><Contact></Contact></PrivetRoute> 
       },
-      // {
-      //   path: '/dashboard',
-      //   element:<PrivetRoute><Dashboard></Dashboard></PrivetRoute> 
-      // },
       {
         path: '/signin',
         element: <SignIn></SignIn>
@@ -56,11 +53,18 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element:<PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute> ,
-    children: [
-      
-      
+    element:<PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
+    children:[
+      {
+        path: '/dashboard',
+        element: <h1>Welcome to Dashboard</h1>
+      },
+      {
+        path: '/dashboard/allemployee',
+        element: <AllEmployee></AllEmployee>
+      }
     ]
+    
   }
 ]);
 

@@ -6,11 +6,16 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { useContext } from "react";
 import Footer from "../pages/Shared/Footer/Footer";
 import Navbar from "../pages/Shared/Navber/Navbar";
+import Loader from "../hooks/Loader";
 
 const DashboardLayout = () => {
-	const { user } = useContext(AuthContext);
-	const [isRole] = useRole(user?.email);
+	const { user,loading } = useContext(AuthContext);
+	const [isRole ] = useRole(user?.email);
+	// if (loading) {
+	// 	return <Loader></Loader>}
+	console.log(user?.email);
 
+	
 	return (
 		<div>
 			<Navbar></Navbar>

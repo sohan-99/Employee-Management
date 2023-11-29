@@ -4,8 +4,8 @@ import Mission from "../Mission/Mission";
 import Services from "../Services/Services";
 import Testimonials from "../Testimonials/Testimonials";
 
-
 const Home = () => {
+
     return (
         <div>
             <Banner></Banner>
