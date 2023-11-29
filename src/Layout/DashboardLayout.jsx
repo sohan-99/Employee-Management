@@ -12,9 +12,9 @@ import Welcome from "../pages/Welcome";
 const DashboardLayout = () => {
 	const { user, loading } = useContext(AuthContext);
 	const [isRole] = useRole(user?.email);
-	// if (loading) {
-	// 	return <Loader></Loader>}
-	console.log(user?.email);
+	if (loading) {
+		return <Loader></Loader>}
+
 
 
 	return (

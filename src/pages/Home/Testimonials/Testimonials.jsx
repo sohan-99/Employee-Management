@@ -14,7 +14,7 @@ const Testimonials = () => {
                         <div className="rating rating-lg">
                             <input type="radio" name="rating-8" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-8" className="mask mask-star-2 bg-green-500"  />
-                            <input type="radio" name="rating-8" className="mask mask-star-2 bg-green-500" checked/>
+                            <input type="radio" name="rating-8" className="mask mask-star-2 bg-green-500" defaultChecked/>
                             <input type="radio" name="rating-8" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-8" className="mask mask-star-2 bg-green-500" />
                         </div>
@@ -27,7 +27,7 @@ const Testimonials = () => {
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500"  />
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
-                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" checked/>
+                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" defaultChecked/>
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
                         </div>
                     </div>
@@ -40,7 +40,7 @@ const Testimonials = () => {
                         <div className="rating rating-lg">
                             <input type="radio" name="rating-1" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-1" className="mask mask-star-2 bg-green-500"  />
-                            <input type="radio" name="rating-1" className="mask mask-star-2 bg-green-500" checked/>
+                            <input type="radio" name="rating-1" className="mask mask-star-2 bg-green-500" defaultChecked/>
                             <input type="radio" name="rating-1" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-1" className="mask mask-star-2 bg-green-500" />
                         </div>
@@ -53,7 +53,7 @@ const Testimonials = () => {
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-green-500"  />
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-green-500" />
-                            <input type="radio" name="rating-2" className="mask mask-star-2 bg-green-500" checked/>
+                            <input type="radio" name="rating-2" className="mask mask-star-2 bg-green-500" defaultChecked/>
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-green-500" />
                         </div>
                     </div>
@@ -67,7 +67,7 @@ const Testimonials = () => {
                         <div className="rating rating-lg">
                             <input type="radio" name="rating-5" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-5" className="mask mask-star-2 bg-green-500"  />
-                            <input type="radio" name="rating-5" className="mask mask-star-2 bg-green-500" checked/>
+                            <input type="radio" name="rating-5" className="mask mask-star-2 bg-green-500" defaultChecked/>
                             <input type="radio" name="rating-5" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-5" className="mask mask-star-2 bg-green-500" />
                         </div>
@@ -80,7 +80,7 @@ const Testimonials = () => {
                             <input type="radio" name="rating-6" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-6" className="mask mask-star-2 bg-green-500"  />
                             <input type="radio" name="rating-6" className="mask mask-star-2 bg-green-500" />
-                            <input type="radio" name="rating-6" className="mask mask-star-2 bg-green-500" checked/>
+                            <input type="radio" name="rating-6" className="mask mask-star-2 bg-green-500" defaultChecked/>
                             <input type="radio" name="rating-6" className="mask mask-star-2 bg-green-500" />
                         </div>
                     </div>
@@ -93,7 +93,7 @@ const Testimonials = () => {
                         <div className="rating rating-lg">
                             <input type="radio" name="rating-7" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-7" className="mask mask-star-2 bg-green-500"  />
-                            <input type="radio" name="rating-7" className="mask mask-star-2 bg-green-500" checked/>
+                            <input type="radio" name="rating-7" className="mask mask-star-2 bg-green-500" defaultChecked/>
                             <input type="radio" name="rating-7" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-7" className="mask mask-star-2 bg-green-500" />
                         </div>
@@ -106,7 +106,7 @@ const Testimonials = () => {
                             <input type="radio" name="rating-9" className="mask mask-star-2 bg-green-500" />
                             <input type="radio" name="rating-9" className="mask mask-star-2 bg-green-500"  />
                             <input type="radio" name="rating-9" className="mask mask-star-2 bg-green-500" />
-                            <input type="radio" name="rating-9" className="mask mask-star-2 bg-green-500" checked/>
+                            <input type="radio" name="rating-9" className="mask mask-star-2 bg-green-500" defaultChecked/>
                             <input type="radio" name="rating-9" className="mask mask-star-2 bg-green-500" />
                         </div>
                     </div>
