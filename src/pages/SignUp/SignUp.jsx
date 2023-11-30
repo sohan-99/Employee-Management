@@ -11,11 +11,11 @@ import app from "../../firebase/firebase.config";
 
 const Signup = () => {
    const imgage_hosting_key = import.meta.env.VITE_IMAGE_HOSTIONG_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_key}`
+   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_key}`
    const navigate = useNavigate()
    const location = useLocation();
    const from = location.state?.from?.pathname || "/";
-   const { createUser, updateUserProfile,setLoading } = useContext(AuthContext)
+   const { createUser, updateUserProfile, setLoading } = useContext(AuthContext)
    const handleGooglePopUp = () => {
       const auth = getAuth(app);
       const provider = new GoogleAuthProvider();
@@ -50,44 +50,42 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_k
       // console.log(email, photo, name, password, designation, accno, salary);
 
       // Validate  password
-      // if (password.length < 6 || !/[A-Z]/.test(password) || !/[!@#$%^&*()_+[\]{};':"\\|,.<>?]/.test(password)) {
-      //    toast.error("Password does not meet requirements.");
-      //    return;
-      // }
+      if (password.length < 6 || !/[A-Z]/.test(password) || !/[!@#$%^&*()_+[\]{};':"\\|,.<>?]/.test(password)) {
+         toast.error("Password does not meet requirements.");
+         return;
+      }
 
-        // Image Upload
+      // Image Upload
+      const image = e.target.photo.files[0];
+      const formData = new FormData();
+      formData.append("image", image);
+      const url = `https://api.imgbb.com/1/upload?key=c104f728187c469b2499aec8f224a408`;
 
-    const image = e.target.photo.files[0];
-    const formData = new FormData();
-    formData.append("image", image);
-    const url = `https://api.imgbb.com/1/upload?key=c104f728187c469b2499aec8f224a408`;
-   // const url = `https://api.imgbb.com/1/upload?key=${image_hosting_api}`;
-
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imageInfo) => {
-         // create user
-         createUser(email, password)
-            .then(result => {
-               saveUser(name, email, designation, imageInfo.data.display_url,salary,accno);
-               updateUserProfile(name, imageInfo.data.display_url)
-                  .then(data => {
-                     navigate("/")
-                     setLoading(false)
-                  })
-                  .catch(error => {
-                     console.log(error.message);
-                  })
-            })
-            .catch(error => {
-               toast.error(error.message);
-            })
+      fetch(url, {
+         method: "POST",
+         body: formData,
       })
+         .then((res) => res.json())
+         .then((imageInfo) => {
+            // create user
+            createUser(email, password)
+               .then(result => {
+                  saveUser(name, email, designation, imageInfo.data.display_url, salary, accno);
+                  updateUserProfile(name, imageInfo.data.display_url)
+                     .then(data => {
+                        navigate("/")
+                        setLoading(false)
+                     })
+                     .catch(error => {
+                        console.log(error.message);
+                     })
+               })
+               .catch(error => {
+                  toast.error(error.message);
+               })
+         })
 
-      
+
    }
    // data sent to database in  form 
    const saveUser = (name, email, designation, photo, salary, accno) => {
@@ -207,7 +205,6 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imgage_hosting_k
                         </option>
                         <option value='Employee'>Employee</option>
                         <option value='HR'>HR</option>
-                        <option value='Admin'>Admin</option>
                      </select>
                   </div>
                   {/* ===================account no==================== */}
