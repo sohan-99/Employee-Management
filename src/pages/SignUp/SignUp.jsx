@@ -97,7 +97,7 @@ const Signup = () => {
          salary: salary,
          bank_account_no: accno,
       };
-      fetch("http://localhost:5000/users", {
+      fetch("https://employee-management-server-two.vercel.app/users", {
          method: "POST",
          headers: {
             "content-type": "application/json",
@@ -123,7 +123,7 @@ const Signup = () => {
          salary: '10000',
          bank_account_no: "45967",
       };
-      fetch("http://localhost:5000/users", {
+      fetch("https://employee-management-server-two.vercel.app/users", {
          method: "POST",
          headers: {
             "content-type": "application/json",

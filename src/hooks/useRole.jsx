@@ -4,7 +4,7 @@ const useRole = (email) => {
    const [isLoadingRole, setisLoadingRole] = useState(true);
    useEffect(() => {
       if (email) {
-         fetch(`http://localhost:5000/users/${email}`)
+         fetch(`https://employee-management-server-two.vercel.app/users/${email}`)
             .then((res) => res.json())
             .then((data) => {
                setIsRole(data?.designation);
