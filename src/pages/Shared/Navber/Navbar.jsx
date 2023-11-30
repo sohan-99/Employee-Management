@@ -2,7 +2,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const Navbar = () => {
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
@@ -24,13 +27,8 @@ const Navbar = () => {
     
     const { user, logOut } = useContext(AuthContext);
     const handleSignOut = () => {
+        toast.success("logged out!");
         logOut()
-            .then(result => {
-               toast.success('Logout Successfully')
-            })
-            .catch(error => {
-                console.log(error);
-            })
     }
     const links =
         <>
@@ -106,7 +104,7 @@ const Navbar = () => {
                     <button className="btn rounded-full bg-slate-400 text-white lg:text-xl lg:font-semibold">SignIn</button>
                 </Link>
                 }
-               
+                <ToastContainer />
             </div>
         </div>
     );

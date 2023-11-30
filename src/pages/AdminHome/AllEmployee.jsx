@@ -26,7 +26,7 @@ const AllEmployee = () => {
                Swal.fire({
                   position: "top-end",
                   icon: "success",
-                  title: `${user.name} is an Admin Now!`,
+                  title: `${user.name} is an HR Now!`,
                   showConfirmButton: false,
                   timer: 1500
                });
